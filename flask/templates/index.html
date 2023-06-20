@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Recognition</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #b0e0e6;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+        margin-top: 0;
+      }
+      form {
+        margin-top: 20px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+      }
+      input[type="file"] {
+        display: none;
+      }
+      .file-label {
+        display: inline-block;
+        background-color: #555;
+        color: #fff;
+        padding: 8px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      .file-label:hover {
+        background-color: #333;
+      }
+      .submit-btn {
+        display: block;
+        margin-top: 10px;
+        background-color: #555;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .submit-btn:hover {
+        background-color: #333;
+      }
+      .about-link {
+        display: block;
+        margin-top: 20px;
+      }
+      .about-link button {
+        background-color: #555;
+        color: #fff;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .about-link button:hover {
+        background-color: #333;
+      }
+      .file-name {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      .dataset-btn {
+        margin-top: 20px;
+      }
+      .dataset-btn a,
+      .about-link a {
+        background-color: #555;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      .dataset-btn a:hover,
+      .about-link a:hover {
+        background-color: #333;
+      }
+    </style>
+    <script>
+      function displayFileName() {
+        var fileInput = document.getElementById("fileInput");
+        var fileNameDisplay = document.getElementById("fileNameDisplay");
+        var fileName = fileInput.files[0].name;
+        fileNameDisplay.innerText = "Selected File: " + fileName;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Image Recognition</h1>
+      <form id="uploadForm" method="POST" action="{{ url_for('index') }}" enctype="multipart/form-data">
+        <label for="fileInput">Team: E16</label>
+        <br>
+        <input type="file" name="file" id="fileInput" accept=".jpg, .jpeg, .png" required onchange="displayFileName()">
+        <label class="file-label" for="fileInput">Choose File</label>
+        <input class="submit-btn" type="submit" value="Classify">
+      </form>
+      <div id="fileNameDisplay" class="file-name"></div>
+      <div class="dataset-btn">
+        <a href="https://challenge.isic-archive.com/data/#2019" target="_blank">Dataset</a>
+      </div>
+    </div>
+  </body>
+</html>
